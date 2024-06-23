@@ -21789,6 +21789,7 @@ function handleEvent(event) {
     if (event.message.text == "/restart") {
 
         ans = wordss[getRandomInt(wordss.length)];
+        ansarr = ans.split("")
         replymsg = `已更新題目`
     }
     if (event.message.text == "/ans") {
@@ -21800,6 +21801,8 @@ function handleEvent(event) {
             if (testworss.test.join('') == "🟩🟩🟩🟩🟩") {
                 replymsg = `恭喜猜中，答案是${testworss.success}\n
                 已出下一題，請繼續遊玩吧`
+                ans = wordss[getRandomInt(wordss.length)];
+                ansarr = ans.split("")
             } else {
                 replymsg = `${testworss.test.join('')}你猜的是${testworss.success}`
             }
