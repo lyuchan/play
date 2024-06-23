@@ -21762,6 +21762,7 @@ function isFiveZhuyin(input) {
 }
 
 ans = wordss[getRandomInt(wordss.length)];
+ansarr = ans.split("")
 /////////////////////////////////////引入必要的模組/////////////////////////////////////
 const line = require("@line/bot-sdk");//linebot
 const express = require("express");//web server
