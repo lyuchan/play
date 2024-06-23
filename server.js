@@ -21761,7 +21761,7 @@ function isFiveZhuyin(input) {
     return zhuyinRegex.test(input);
 }
 
-
+ans = wordss[getRandomInt(wordss.length)];
 /////////////////////////////////////引入必要的模組/////////////////////////////////////
 const line = require("@line/bot-sdk");//linebot
 const express = require("express");//web server
@@ -21793,7 +21793,8 @@ function handleEvent(event) {
         let testworss = testword(event.message.text)
         if (testworss.success != undefined) {
             if (testworss.test.join('') == "🟩🟩🟩🟩🟩") {
-                replymsg = `恭喜猜中，答案是${testworss.success}`
+                replymsg = `恭喜猜中，答案是${testworss.success}\n
+                已出下一題，請繼續遊玩吧`
             } else {
                 replymsg = `${testworss.test.join('')}你猜的是${testworss.success}`
             }
