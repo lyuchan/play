@@ -21734,12 +21734,12 @@ function testword(input) {
         for (let i = 0; i < 5; i++) {
             if (ansarr.indexOf(inputarr[i]) != -1) {
                 if (ansarr[i] == inputarr[i]) {
-                    testss[i] = 't'
+                    testss[i] = '🟩'
                 } else {
-                    testss[i] = 'n'
+                    testss[i] = '🟨'
                 }
             } else {
-                testss[i] = 'f'
+                testss[i] = '⬛'
             }
         }
         return { success: wordsssss[input], test: testss }
@@ -21752,7 +21752,14 @@ function getRandomInt(max) {
 }
 
 //console.log(wordss[getRandomInt(wordss.length)])
-//console.log(testword('ㄅㄅㄅㄟㄗ'))
+//console.log(testword('ㄅㄚㄅㄟㄗ'))
+function isFiveZhuyin(input) {
+    // 定義所有的注音符號範圍
+    const zhuyinRegex = /^[\u3105-\u3129]{5}$/;
+
+    // 測試輸入是否符合五個注音符號的正則表達式
+    return zhuyinRegex.test(input);
+}
 
 
 /////////////////////////////////////引入必要的模組/////////////////////////////////////
@@ -21773,12 +21780,27 @@ app.post('/linebotwebhook', line.middleware(config), (req, res) => {
         });
 });
 function handleEvent(event) {
+    let replymsg = ""
     if (event.type !== 'message' || event.message.type !== 'text') {
         //console.log(event.message.text)
         return Promise.resolve(null);
 
     }
-
+    if (event.message.text == "/restart") {
+        ans = wordss[getRandomInt(wordss.length)];
+    }
+    if (isFiveZhuyin(event.message.text)) {
+        let testworss = testword(event.message.text)
+        if (testworss.success != undefined) {
+            if (testworss.test.join('') == "🟩🟩🟩🟩🟩") {
+                replymsg = `恭喜猜中，答案是${testworss.success}`
+            } else {
+                replymsg = `${testworss.test.join('')}你猜的是${testworss.success}`
+            }
+        } else {
+            replymsg = "沒有這個字"
+        }
+    }
     return client.replyMessage({
         replyToken: event.replyToken,
         messages: [{
