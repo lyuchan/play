@@ -6,10 +6,10 @@ function RunCmd(cmd, args, cb) {
   var spawn = require('child_process').spawn;
   var child = spawn(cmd, args);
   var result = '';
-  child.stdout.on('data', function (data) {
+  child.stdout.on('data', function(data) {
     result += data.toString();
   });
-  child.stdout.on('end', function () {
+  child.stdout.on('end', function() {
     cb(result)
   });
 }
@@ -30,8 +30,8 @@ handler.on('push', function (event) {
     event.payload.repository.name,
     event.payload.ref);
   var shpath = './' + event.payload.repository.name + '.sh';
-  RunCmd('sh', [shpath], function (result) {
-    console.log(result);
+  RunCmd('sh', [shpath], function(result) {
+      console.log(result);
   })
 })
 
