@@ -21751,8 +21751,8 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-console.log(wordss[getRandomInt(wordss.length)])
-console.log(testword('ㄅㄅㄅㄟㄗ'))
+//console.log(wordss[getRandomInt(wordss.length)])
+//console.log(testword('ㄅㄅㄅㄟㄗ'))
 
 
 /////////////////////////////////////引入必要的模組/////////////////////////////////////
@@ -21774,7 +21774,7 @@ app.post('/linebotwebhook', line.middleware(config), (req, res) => {
 });
 function handleEvent(event) {
     if (event.type !== 'message' || event.message.type !== 'text') {
-        console.log(event.message.text)
+        //console.log(event.message.text)
         return Promise.resolve(null);
 
     }
@@ -21783,7 +21783,7 @@ function handleEvent(event) {
         replyToken: event.replyToken,
         messages: [{
             type: "text",
-            text: "hello world"
+            text: event.message.text
         }],
     });
 }
