@@ -21787,7 +21787,12 @@ function handleEvent(event) {
 
     }
     if (event.message.text == "/restart") {
+
         ans = wordss[getRandomInt(wordss.length)];
+        replymsg = `已更新題目`
+    }
+    if (event.message.text == "/ans") {
+        replymsg = `答案是${wordsssss[ans]}`
     }
     if (isFiveZhuyin(event.message.text)) {
         let testworss = testword(event.message.text)
