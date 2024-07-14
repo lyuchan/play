@@ -11,7 +11,6 @@ const options = {
     }
 };
 
-
 const req = https.request(options, (res) => {
     let data = '';
 
