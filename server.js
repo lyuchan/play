@@ -37,6 +37,3 @@ req.on('error', (e) => {
 
 req.end();
 
-while (true) {
-
-}
