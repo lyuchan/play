@@ -12,6 +12,7 @@ const options = {
 };
 
 const req = https.request(options, (res) => {
+    console.log("get data")
     let data = '';
 
     // A chunk of data has been received.
